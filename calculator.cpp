@@ -16,6 +16,7 @@ int multiply(int a, int b) {
     return a * b;
 }
 
+// main function
 int main() {
     int choice, x, y;
 
