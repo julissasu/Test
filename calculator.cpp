@@ -1,35 +1,31 @@
 #include <iostream>
-#include <cmath> // for sqrt
+#include <cmath>
 using namespace std;
 
 // Basic functions
-int add(int a, int b) {
+double add(double a, double b) {
     return a + b;
 }
 
-int subtract(int a, int b) {
+double subtract(double a, double b) {
     return a - b;
 }
 
-int multiply(int a, int b) {
+double multiply(double a, double b) {
     return a * b;
 }
 
-double divide(int a, int b) {
-    return (double)a / b;
+double divide(double a, double b) {
+    return a / b;
 }
 
 // Power function
-int power(int base, int exp) {
-    int result = 1;
-    for (int i = 0; i < exp; i++) {
-        result *= base;
-    }
-    return result;
+double power(double base, double exp) {
+    return pow(base, exp);
 }
 
 // Square root function
-double squareRoot(int n) {
+double squareRoot(double n) {
     return sqrt(n);
 }
 
@@ -47,7 +43,8 @@ void showMenu() {
 }
 
 int main() {
-    int choice, x, y;
+    int choice;
+    double x, y;
 
     do {
         showMenu();
