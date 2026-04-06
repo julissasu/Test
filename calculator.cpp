@@ -1,34 +1,31 @@
 #include <iostream>
 #include <cmath>
-#include <iomanip> // for formatting
+#include <iomanip>
+#include <sstream> // for string formatting
 using namespace std;
 
+// Function to format number with commas
+string formatNumber(double num) {
+    stringstream ss;
+    ss << fixed << setprecision(2) << num;
+    string str = ss.str();
+
+    int insertPosition = str.find('.') - 3;
+    while (insertPosition > 0) {
+        str.insert(insertPosition, ",");
+        insertPosition -= 3;
+    }
+
+    return str;
+}
+
 // Basic functions
-double add(double a, double b) {
-    return a + b;
-}
-
-double subtract(double a, double b) {
-    return a - b;
-}
-
-double multiply(double a, double b) {
-    return a * b;
-}
-
-double divide(double a, double b) {
-    return a / b;
-}
-
-// Power function
-double power(double base, double exp) {
-    return pow(base, exp);
-}
-
-// Square root function
-double squareRoot(double n) {
-    return sqrt(n);
-}
+double add(double a, double b) { return a + b; }
+double subtract(double a, double b) { return a - b; }
+double multiply(double a, double b) { return a * b; }
+double divide(double a, double b) { return a / b; }
+double power(double base, double exp) { return pow(base, exp); }
+double squareRoot(double n) { return sqrt(n); }
 
 // Menu
 void showMenu() {
@@ -45,10 +42,7 @@ void showMenu() {
 
 int main() {
     int choice;
-    double x, y;
-
-    // Set output to 2 decimal places
-    cout << fixed << setprecision(2);
+    double x, y, result;
 
     do {
         showMenu();
@@ -58,19 +52,22 @@ int main() {
             case 1:
                 cout << "Enter two numbers: ";
                 cin >> x >> y;
-                cout << "Result: " << add(x, y) << endl;
+                result = add(x, y);
+                cout << "Result: " << formatNumber(result) << endl;
                 break;
 
             case 2:
                 cout << "Enter two numbers: ";
                 cin >> x >> y;
-                cout << "Result: " << subtract(x, y) << endl;
+                result = subtract(x, y);
+                cout << "Result: " << formatNumber(result) << endl;
                 break;
 
             case 3:
                 cout << "Enter two numbers: ";
                 cin >> x >> y;
-                cout << "Result: " << multiply(x, y) << endl;
+                result = multiply(x, y);
+                cout << "Result: " << formatNumber(result) << endl;
                 break;
 
             case 4:
@@ -78,14 +75,17 @@ int main() {
                 cin >> x >> y;
                 if (y == 0)
                     cout << "Error: Cannot divide by zero!\n";
-                else
-                    cout << "Result: " << divide(x, y) << endl;
+                else {
+                    result = divide(x, y);
+                    cout << "Result: " << formatNumber(result) << endl;
+                }
                 break;
 
             case 5:
                 cout << "Enter base and exponent: ";
                 cin >> x >> y;
-                cout << "Result: " << power(x, y) << endl;
+                result = power(x, y);
+                cout << "Result: " << formatNumber(result) << endl;
                 break;
 
             case 6:
@@ -93,8 +93,10 @@ int main() {
                 cin >> x;
                 if (x < 0)
                     cout << "Error: Cannot take square root of negative number!\n";
-                else
-                    cout << "Result: " << squareRoot(x) << endl;
+                else {
+                    result = squareRoot(x);
+                    cout << "Result: " << formatNumber(result) << endl;
+                }
                 break;
 
             case 7:
