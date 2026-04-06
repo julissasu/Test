@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip> // for formatting
 using namespace std;
 
 // Basic functions
@@ -45,6 +46,9 @@ void showMenu() {
 int main() {
     int choice;
     double x, y;
+
+    // Set output to 2 decimal places
+    cout << fixed << setprecision(2);
 
     do {
         showMenu();
