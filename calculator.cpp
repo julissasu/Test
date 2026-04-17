@@ -1,3 +1,4 @@
+// This is a simple calculator program
 #include <iostream>
 #include <cmath>
 #include <iomanip>
